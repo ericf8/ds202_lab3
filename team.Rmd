@@ -32,7 +32,7 @@ names(happy) <- tolower(names(happy)) #making all column headings lowercase for 
 
 head(happy) #checking first 6 records
 
-ggplot(happy, aes(x=happy)) +geom_bar() #initial view of the distribution before dropping NA's
+ggplot(happy, aes(x=happy)) +geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #initial view of the distribution before dropping NA's
 
 
 index_na = which(is.na(happy$happy)==TRUE | (happy$happy == "IAP") == TRUE | (happy$happy =="DK") == TRUE ) #used find the the rows where happy column has an NA, DK, or IAP values
@@ -42,7 +42,7 @@ length(index_na) # The total number of indexes with the value NA
 
 happy_clean <- happy[-index_na, ]
 happy_clean
-ggplot(happy_clean, aes(x=happy)) + geom_bar() #using the barchart, we can see that the NA column was removed
+ggplot(happy_clean, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #using the barchart, we can see that the NA column was removed
 
 ```
 
