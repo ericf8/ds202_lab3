@@ -83,9 +83,14 @@ library(ggplot2)
 
 ggplot(happy_grouped, aes(age, fill = marital)) + geom_histogram(binwidth = 1) + labs(title = "Distribution of Ages by Marital Status", x = "Age (years)", y = "Frequency")
 
+#Here is a Histogram showing the distribution of ages by different happiness types.
+
+ggplot(happy_grouped, aes(age, fill = happy)) + geom_histogram(binwidth = 1) + labs(title = "Distribution of Age by Happiness Type", x = "Age (year)", y = "Frequency")
+
 #Here is a bar chart showing the ratios of each party type by the type of happiness.
 
 ggplot(happy, aes(happy, fill = partyid)) + geom_bar(position = 'fill') + labs(title = "Ratio of Party Affiliation by Happiness Index", x = "Happiness", y = "Percentage (out of 100)")
+
 
 
 
