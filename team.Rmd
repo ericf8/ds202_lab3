@@ -76,6 +76,19 @@ Two variables of interest are `...` and `...`. Their distributions are as follow
 ```{r}
 #insert relevant R code here
 #include graphics. DESCRIBE your plot in context. Make sure it includes axis labels and appropriate title. 
+
+library(ggplot2)
+
+#Here is a Histogram showing the distribution of ages by different marital statuses.
+
+ggplot(happy_grouped, aes(age, fill = marital)) + geom_histogram(binwidth = 1) + labs(title = "Distribution of Ages by Marital Status", x = "Age (years)", y = "Frequency")
+
+#Here is a bar chart showing the ratios of each party type by the type of happiness.
+
+ggplot(happy, aes(happy, fill = partyid)) + geom_bar(position = 'fill') + labs(title = "Ratio of Party Affiliation by Happiness Index", x = "Happiness", y = "Percentage (out of 100)")
+
+
+
 ```
 
 The distribution for `...` is `....`, suggesting that `....` 
