@@ -92,7 +92,7 @@ ggplot(happy, aes(happy, fill = partyid)) + geom_bar(position = 'fill') + labs(t
 ggplot(happy_grouped, aes(happy, age, fill = marital)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
 
 #Boxplot of financial situation as described by the person, by age, with emphasis on happiness.
-ggplot(happy_grouped, aes(finrela, age, fill = happy)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Financial stability and Age, with emphasis on Happiness", x = "Financial Situation", y = "Ages in Years")
+ggplot(happy_grouped, aes(finrela, age, fill = happy)) + geom_boxplot() + labs(title = "Distribution of Financial stability and Age emphasizing Happiness", x = "Financial Situation", y = "Ages in Years")
 
 #Smooth line plot with time on the x-axis and ages on the y-axis, with emphasis on happiness.
 ggplot(happy_grouped, aes(year, age, color = happy)) + geom_smooth() + labs(title = "Distribution of Age based on Time, with emphasis on Happiness over Time", x = "Years", y = "Ages in Years")
@@ -102,6 +102,11 @@ ggplot(happy_grouped, aes(year, age, color = happy)) + geom_smooth() + labs(titl
   
   We also wanted to see if we could find other meaningful patterns between happiness and other variables, in which we created a barchart of happiness indices on the x-axis, whilst color-coding the ratio of people who were politically affiliated with a certain party. It was interesting to see that strong democrats were typically happier than strong republicans, but they also tended to be more unhappy than strong republicans as well. From what we could tell, people who were more left-leaning tended to be happier than the fully-right republicans, and right-leaning moderates. In our fourth plot, we decided to use a boxplot to see the distribution of age upon each level of happiness, with emphasis on marital status again. We also chose to use our reordered dataframe (we used the original happy dataframe, with the only modification being the cleaning that we did in the first part) to have a cleaner looking plot. From the boxplot we can immediately tell that the people who have never married, and widows, have incurred the most outliers, with a lot of people choosing to never marry at any age past 40 (typically), and many people becoming widowed in their earlier years (20-40) as well. People who are separated tend to do so at a younger age than those who file for a divorce, which could lead to happiness later in life. This claim is inconclusive because people who separate tend to divorce their spouse at some point, so there could be unseen overlapping in this plot. 
   
-  (ERIC) Next, we looked at another boxplot that had people's financial situations (relative to where they thought they were at the time), by their ages, with emphasis on their levels of happiness, and from this plot we can see that................
- (ERIC) Finally, we thought it would be interesting to try and plot year and ages (on the x and y-axes respectively), with happiness levels being our color-code, mainly to see if there was any change in the ages of people within these happiness categories over the decades.................
+  Next, we looked at another boxplot that had people's financial situations (relative to where they thought they were at the time), by their ages, with emphasis on their levels of happiness, and from this plot we can see that there is some correlation with these variables. However, these variables don't tell us a lot about data trends, which could be due to the NA values that we kept in the dataframe. Finally, we thought it would be interesting to try and plot year and ages (on the x and y-axes respectively), with happiness levels being our color-code, mainly to see if there was any change in the ages of people within these happiness categories over the decades. With this plot we can see that between 1990 and 2000, there was some fluctuation with all kinds of happiness with the most steady change being 'very happy' people increasing in age. 
+
+
+
+
+
+
 
