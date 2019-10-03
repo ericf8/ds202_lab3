@@ -58,7 +58,15 @@ str(happy) # displayed the structure of the new happy_clean to check if the vari
 
 Factors were also organized into meaningful order as follows: 
 ```{r}
-#insert relevant R code for Q3 here
+
+library(dplyr)
+
+happy_grouped = happy %>% group_by(marital) %>% mutate(avgAge = mean(age, na.rm= TRUE)) # Grouped the marital status in the dataset happy by the average age 
+
+happy_grouped$marital = reorder(happy_grouped$marital, happy_grouped$avgAge) # Based on the the code we pulled from eda; the order in which the dataframe is presented is originally grouped by marital status as well as average age, this is why we see people, for example, with the marital status of never married having a lower average as then say, someone who has been widowed will have a typically higher average age. 
+
+happy_grouped
+
 ```
 
 
