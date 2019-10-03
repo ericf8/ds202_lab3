@@ -43,9 +43,9 @@ ggplot(happy, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness I
 
 ```
 
-In total there were `36391 ` number of missing values for the following `11` variables. 
+In total, there were 36,391 "missing" NA values through all 11 variables. 
 
-Variables were also cast into the correct type in order to ease data visualization. This was done by:
+The variables were also cast into the correct type in order to ease data visualization. This was done by:
 ```{r}
 str(happy) # Looked at the variables' data types to find that age should be converted to Integer
 
@@ -68,20 +68,17 @@ happy_grouped$marital = reorder(happy_grouped$marital, happy_grouped$avgAge) # B
 happy_grouped
 
 ```
-
+We decided to group by marital status, while creating a new column that computes the average age of any person that falls under that certain status, which we then used reorder to implement our changes.
 
 ## Data Exploration 
 
-Two variables of interest are `...` and `...`. Their distributions are as follow: 
+Two variables of interest are `Age` and `Marital Status`. We also wanted to check how `Happiness` relates to `Age` as well, and both of those distributions are as follow: 
 ```{r}
-#insert relevant R code here
-#include graphics. DESCRIBE your plot in context. Make sure it includes axis labels and appropriate title. 
-
 library(ggplot2)
 
 #Here is a Histogram showing the distribution of ages by different marital statuses.
 
-ggplot(happy_grouped, aes(age, fill = marital)) + geom_histogram(binwidth = 1) + labs(title = "Distribution of Ages by Marital Status", x = "Age (years)", y = "Frequency")
+ggplot(happy_grouped, aes(age, fill = marital)) + geom_histogram(binwidth = 1) + labs(title = "Distribution of Ages by Marital Status", x = "Ages in Years", y = "Frequency")
 
 #Here is a Histogram showing the distribution of ages by different happiness types.
 
@@ -91,13 +88,20 @@ ggplot(happy_grouped, aes(age, fill = happy)) + geom_histogram(binwidth = 1) + l
 
 ggplot(happy, aes(happy, fill = partyid)) + geom_bar(position = 'fill') + labs(title = "Ratio of Party Affiliation by Happiness Index", x = "Happiness", y = "Percentage (out of 100)")
 
+#Boxplot of ages and happiness levels, with emphasis upon marital status.
+ggplot(happy_grouped, aes(happy, age, fill = marital)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
 
+#Boxplot of financial situation as described by the person, by age, with emphasis on happiness.
+ggplot(happy_grouped, aes(finrela, age, fill = happy)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
 
+#Smooth line plot with time on the x-axis and ages on the y-axis, with emphasis on happiness.
+ggplot(happy_grouped, aes(year, age, color = happy)) + geom_smooth() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
 
 ```
-
-The distribution for `...` is `....`, suggesting that `....` 
-
-
-
+  We observed the distribution of `Age` twice, but with emphasis on marital status and happiness respectively, and by checking both distributions at overlap points, we could see meaningful conclusions. While the number of people who are considered "NOT TOO HAPPY" isn't a majority, we saw that those who tended to not marry in their early years weren't as unhappy as people who married in their mid-20s and 30s. Again, this is a small minority of people, with a majority of people claiming that they're pretty happy, all throughout their lives, regardless of marital status. The level of happiness decreases for everyone as their age increases, which is predictable, but the happiest period of someone's life seems to be between the ages of 20 and 40. Come year 40, that's when we saw an overall decrease in happiness levels, which in a way, could be attributed to "mid-life crises", where people are having the repeated abuse to their bodies start to catch up to them, they feel more sluggish, more aches and pains, slower than they did before, and so on.
+  
+  We also wanted to see if we could find other meaningful patterns between happiness and other variables, in which we created a barchart of happiness indices on the x-axis, whilst color-coding the ratio of people who were politically affiliated with a certain party. It was interesting to see that strong democrats were typically happier than strong republicans, but they also tended to be more unhappy than strong republicans as well. From what we could tell, people who were more left-leaning tended to be happier than the fully-right republicans, and right-leaning moderates. In our fourth plot, we decided to use a boxplot to see the distribution of age upon each level of happiness, with emphasis on marital status again. We also chose to use our reordered dataframe (we used the original happy dataframe, with the only modification being the cleaning that we did in the first part) to have a cleaner looking plot. From the boxplot we can immediately tell that the people who have never married, and widows, have incurred the most outliers, with a lot of people choosing to never marry at any age past 40 (typically), and many people becoming widowed in their earlier years (20-40) as well. People who are separated tend to do so at a younger age than those who file for a divorce, which could lead to happiness later in life. This claim is inconclusive because people who separate tend to divorce their spouse at some point, so there could be unseen overlapping in this plot. 
+  
+  (ERIC) Next, we looked at another boxplot that had people's financial situations (relative to where they thought they were at the time), by their ages, with emphasis on their levels of happiness, and from this plot we can see that................
+ (ERIC) Finally, we thought it would be interesting to try and plot year and ages (on the x and y-axes respectively), with happiness levels being our color-code, mainly to see if there was any change in the ages of people within these happiness categories over the decades.................
 
