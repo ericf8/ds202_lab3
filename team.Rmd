@@ -49,7 +49,9 @@ Variables were also cast into the correct type in order to ease data visualizati
 ```{r}
 str(happy) # Looked at the variables' data types to find that age should be converted to Integer
 
-happy = mutate(happy, age = as.integer(age)) # Converted the age variable to type Int
+
+happy <- happy %>% 
+  mutate(age = replace(age, age == "89 OR OLDER", 89),age = as.numeric(age)) #used dplyr in order to mutate our happy dataframe, whilst using replace inside of the mutate argument in order to fulfill requirements, then used the final argument to change age's variable class from character to numeric. 
 
 str(happy) # displayed the structure of the new happy_clean to check if the variable age was successfully mutated
 ```
