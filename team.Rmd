@@ -37,9 +37,9 @@ happy
 (happy[is.na(happy) | happy == "IAP" | happy == "DK"] = NA) # Here we identified the na values and the values "IAP" and "DK" and inserted "NA"
 happy
 
-table(is.na(happy)) # used table() to view how many NA values there were in the Dataset
+table(is.na(happy)) # used table() to view how many NA values there were in the Dataset, we saw there to be 36,391 instances of NA across ALL COLUMNS.
 
-ggplot(happy, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #using the barchart, we can see that the NA column was removed
+ggplot(happy, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #this barchart shows the distribution of the happiness index, as well as NA values in the happy column.
 
 ```
 
