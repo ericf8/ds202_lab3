@@ -32,25 +32,26 @@ names(happy) <- tolower(names(happy)) #making all column headings lowercase for 
 
 head(happy) #checking first 6 records
 
-ggplot(happy, aes(x=happy)) +geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #initial view of the distribution before dropping NA's
 
+happy
+(happy[is.na(happy) | happy == "IAP" | happy == "DK"] = NA) # Here we identified the na values and the values "IAP" and "DK" and inserted "NA"
+happy
 
-index_na = which(is.na(happy$happy)==TRUE | (happy$happy == "IAP") == TRUE | (happy$happy =="DK") == TRUE ) #used find the the rows where happy column has an NA, DK, or IAP values
-head(index_na)
+table(is.na(happy)) # used table() to view how many NA values there were in the Dataset
 
-length(index_na) # The total number of indexes with the value NA
-
-happy_clean <- happy[-index_na, ]
-happy_clean
-ggplot(happy_clean, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #using the barchart, we can see that the NA column was removed
+ggplot(happy, aes(x=happy)) + geom_bar() + labs(title = "Bar Plot of happiness Index Distribution", x = "Happiness Type", y = "Frequency") #using the barchart, we can see that the NA column was removed
 
 ```
 
-In total there were `4756` number of missing values for the following `6` variables. 
+In total there were `36391 ` number of missing values for the following `11` variables. 
 
 Variables were also cast into the correct type in order to ease data visualization. This was done by:
 ```{r}
-#insert relevant R code for Q2 here
+str(happy) # Looked at the variables' data types to find that age should be converted to Integer
+
+happy = mutate(happy, age = as.integer(age)) # Converted the age variable to type Int
+
+str(happy) # displayed the structure of the new happy_clean to check if the variable age was successfully mutated
 ```
 
 Factors were also organized into meaningful order as follows: 
