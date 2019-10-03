@@ -1,7 +1,7 @@
 ---
-title: 'Template - Lab 3: Exploring Happiness'
-subtitle: "Due: Thursday 10/03/2019 by 10 pm"
-author: "Lynna Chu"
+title: 'Lab 3: Exploring Happiness'
+subtitle: "Due: 10/03/2019 by 10 pm"
+author: "Aashwin Lamsal, Eric Friesth"
 
 date: "09/26/2019"
 output: html_document
@@ -19,7 +19,7 @@ The General Social Survey (GSS) has been run by NORC every other year since 1972
 | Sex           | Sex of respondent     | 
 |....           | .....      | 
 
-Now it's important to understand what each column stands for. You can find a codebook with explanations for each of the variables at https://gssdataexplorer.norc.org/
+The codebook with explanations for each of the variables can be found at https://gssdataexplorer.norc.org/
 
 ## Data Cleaning 
 
@@ -33,9 +33,9 @@ names(happy) <- tolower(names(happy)) #making all column headings lowercase for 
 head(happy) #checking first 6 records
 
 
-happy
+#happy #Called to check happy before manipulation.
 (happy[is.na(happy) | happy == "IAP" | happy == "DK"] = NA) # Here we identified the na values and the values "IAP" and "DK" and inserted "NA"
-happy
+#happy #Called to check happy post manipulation.
 
 table(is.na(happy)) # used table() to view how many NA values there were in the Dataset, we saw there to be 36,391 instances of NA across ALL COLUMNS.
 
@@ -65,7 +65,7 @@ happy_grouped = happy %>% group_by(marital) %>% mutate(avgAge = mean(age, na.rm=
 
 happy_grouped$marital = reorder(happy_grouped$marital, happy_grouped$avgAge) # Based on the the code we pulled from eda; the order in which the dataframe is presented is originally grouped by marital status as well as average age, this is why we see people, for example, with the marital status of never married having a lower average as then say, someone who has been widowed will have a typically higher average age. 
 
-happy_grouped
+#happy_grouped #Called to check the grouping of our variables.
 
 ```
 We decided to group by marital status, while creating a new column that computes the average age of any person that falls under that certain status, which we then used reorder to implement our changes.
