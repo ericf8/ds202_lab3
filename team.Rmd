@@ -25,7 +25,23 @@ Now it's important to understand what each column stands for. You can find a cod
 
 Initial exploration revealed that some data processing was needed before we could proceed with further visualization. All missing values were encoded with 'NA' as follows:
 ```{r}
-#insert relevant R code for Q1 here
+library(tidyverse) #loading tidyverse to use dplyr functions
+#importing the code from Lab3.Rmd to initialize happy, and make names lowercase
+happy <- readRDS("HAPPY.rds") #initializing the Happy dataframe
+names(happy) <- tolower(names(happy)) #making all column headings lowercase for ease of usability 
+
+head(happy) #checking first 6 records
+
+ggplot(happy, aes(x=happy)) +geom_bar() #initial view of the distribution before dropping NA's
+
+
+index_na = which(is.na(happy$happy)==TRUE | (happy$happy == "IAP") == TRUE | (happy$happy =="DK") == TRUE ) #used find the the rows where happy column has an NA, DK, or IAP values
+head(index_na) #
+
+happy_clean <- happy[-index_na, ]
+happy_clean
+ggplot(happy_clean, aes(x=happy)) + geom_bar() #using the barchart, we can see that the NA column was removed
+
 ```
 
 In total there were `....` number of missing values for the following `....` variables. 
