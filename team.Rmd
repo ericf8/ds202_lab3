@@ -92,10 +92,10 @@ ggplot(happy, aes(happy, fill = partyid)) + geom_bar(position = 'fill') + labs(t
 ggplot(happy_grouped, aes(happy, age, fill = marital)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
 
 #Boxplot of financial situation as described by the person, by age, with emphasis on happiness.
-ggplot(happy_grouped, aes(finrela, age, fill = happy)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
+ggplot(happy_grouped, aes(finrela, age, fill = happy)) + geom_boxplot() + labs(title = "Distribution of Happiness based on Financial stability and Age, with emphasis on Happiness", x = "Financial Situation", y = "Ages in Years")
 
 #Smooth line plot with time on the x-axis and ages on the y-axis, with emphasis on happiness.
-ggplot(happy_grouped, aes(year, age, color = happy)) + geom_smooth() + labs(title = "Distribution of Happiness based on Age, with emphasis on Marital Status", x = "Happiness Level", y = "Ages in Years")
+ggplot(happy_grouped, aes(year, age, color = happy)) + geom_smooth() + labs(title = "Distribution of Age based on Time, with emphasis on Happiness over Time", x = "Years", y = "Ages in Years")
 
 ```
   We observed the distribution of `Age` twice, but with emphasis on marital status and happiness respectively, and by checking both distributions at overlap points, we could see meaningful conclusions. While the number of people who are considered "NOT TOO HAPPY" isn't a majority, we saw that those who tended to not marry in their early years weren't as unhappy as people who married in their mid-20s and 30s. Again, this is a small minority of people, with a majority of people claiming that they're pretty happy, all throughout their lives, regardless of marital status. The level of happiness decreases for everyone as their age increases, which is predictable, but the happiest period of someone's life seems to be between the ages of 20 and 40. Come year 40, that's when we saw an overall decrease in happiness levels, which in a way, could be attributed to "mid-life crises", where people are having the repeated abuse to their bodies start to catch up to them, they feel more sluggish, more aches and pains, slower than they did before, and so on.
